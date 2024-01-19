@@ -20,9 +20,9 @@ const addToTask = function (elem, text, parent, clas=null, ) {
 }
 
 function updateLocalStorage (target, action) {
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].id === target.parentElement.dataset.id) {
-            tasks[i][action] = !tasks[i][action];
+    for (let task of tasks) {
+        if (task.id === target.parentElement.dataset.id) {
+            task[action] = !task[action];
             localStorage.setItem('todos', JSON.stringify(tasks))
         }
     }
@@ -39,12 +39,12 @@ function removeTaskFromLocalStorage (id) {
 const tasks = JSON.parse(localStorage.getItem('todos')) || [];
 
 // Retrieve from local Storage
-for (let i = 0; i < tasks.length; i++) {
+for (let task of tasks) {
     let newListItem = document.createElement('li');
-    newListItem.innerText = tasks[i].task;
-    newListItem.dataset.id = tasks[i].id;
-    newListItem.isCompleted = tasks[i].isCompleted ? true : false;
-    newListItem.isUrgent = tasks[i].isUrgent ? true : false;
+    newListItem.innerText = task.task;
+    newListItem.dataset.id = task.id;
+    newListItem.isCompleted = task.isCompleted ? true : false;
+    newListItem.isUrgent = task.isUrgent ? true : false;
     if (newListItem.isCompleted) {
         newListItem.classList.add('completed')
     }
