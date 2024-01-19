@@ -1,0 +1,18 @@
+.important {
+    background-color: red;
+    font-weight: bold;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+ul li {
+    width: 100%;
+    font-size: 30px;
+}
+
+li button {
+    margin-left: 10px;
+}
+
